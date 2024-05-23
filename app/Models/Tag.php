@@ -10,8 +10,10 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function jobs(): BelongsToMany
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany(Job::class, 'job_tag');
     }
 }

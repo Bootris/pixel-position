@@ -11,18 +11,29 @@ class Job extends Model
 {
     use HasFactory;
 
-    public function tag(string $name): void
+    protected $guarded = [];
+
+    /**
+     * Add provided tag by name.
+     */
+    public function addTag(string $name): void
     {
         $tag = Tag::firstOrCreate(['name' => strtolower($name)]);
 
         $this->tags()->attach($tag);
     }
 
+    /**
+     * Get the tags that belong to job.
+     */
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'job_tag');
     }
 
+    /**
+     * Get employeer that owns the job.
+     */
     public function employer(): BelongsTo
     {
         return $this->belongsTo(Employer::class);

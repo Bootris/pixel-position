@@ -9,7 +9,7 @@
 @endphp
 
 <x-forms.field :$label :$name>
-    <select {{ $attributes($defaults) }}>
+    <select {{ $attributes($defaults) }} class="text-gray-500">
         {{ $slot }}
     </select>
 </x-forms.field>
