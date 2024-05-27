@@ -2,12 +2,17 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index'])->name('index');
+
+Route::prefix('/salaries')->name('salaries.')->group(function () {
+    Route::get('/', [SalariesController::class, 'index'])->name('index');
+});
 
 Route::prefix('/jobs')->name('jobs.')->group(function () {
     Route::get('/', [JobController::class, 'index'])->name('index');

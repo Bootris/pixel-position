@@ -109,7 +109,7 @@ class JobController extends Controller
             $tagNames = explode(',', str_replace(' ', '', $tagsInput));
 
             // Retrieve or create tags
-            $tags = collect($tagNames)->map(function($tagName) {
+            $tags = collect($tagNames)->map(function ($tagName) {
                 return Tag::firstOrCreate(['name' => $tagName])->id;
             });
 
