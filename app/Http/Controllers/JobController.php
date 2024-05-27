@@ -124,7 +124,6 @@ class JobController extends Controller
         return redirect('jobs/');
     }
 
-
     public function destroy(Job $job)
     {
         $job->delete();
